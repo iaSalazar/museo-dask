@@ -4,29 +4,27 @@ import { ExhibitionEntity } from '../exhibition/exhibition.entity';
 
 @Entity()
 export class MuseumEntity {
- @PrimaryGeneratedColumn('uuid')
- id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
- @Column()
- name: string;
- 
- @Column()
- description: string;
- 
- @Column()
- address: string;
- 
- @Column()
- city: string;
+  @Column()
+  name: string;
 
- @Column()
- image: string;
+  @Column()
+  description: string;
 
- @OneToMany(() => ExhibitionEntity, exhibition => exhibition.museum)
- exhibitions: ExhibitionEntity[];
+  @Column()
+  address: string;
 
- @OneToMany(() => ArtworkEntity, artwork => artwork.museum)
- artworks: ArtworkEntity[];
+  @Column()
+  city: string;
 
+  @Column()
+  image: string;
 
+  @OneToMany(() => ExhibitionEntity, (exhibition) => exhibition.museum)
+  exhibitions: ExhibitionEntity[];
+
+  @OneToMany(() => ArtworkEntity, (artwork) => artwork.museum)
+  artworks: ArtworkEntity[];
 }

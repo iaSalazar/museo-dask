@@ -7,7 +7,6 @@ import { MuseumController } from './museum.controller';
 @Module({
   providers: [MuseumService],
   imports: [TypeOrmModule.forFeature([MuseumEntity])],
-  controllers: [MuseumController]
+  controllers: [MuseumController],
 })
 export class MuseumModule {}
-

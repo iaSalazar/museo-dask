@@ -1,5 +1,15 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  Put,
+  UseInterceptors,
+} from '@nestjs/common';
 import { plainToClass, plainToInstance } from 'class-transformer';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { ArtworkDto } from './artwork.dto';
@@ -9,14 +19,14 @@ import { ArtworkService } from './artwork.service';
 @Controller('artworks')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ArtworkController {
-    constructor(private readonly artworkService: ArtworkService) {}
+  constructor(private readonly artworkService: ArtworkService) {}
 
   @Get()
   async findAll() {
     return await this.artworkService.findAll();
   }
 
-  @Get(':artworkId') 
+  @Get(':artworkId')
   async findOne(@Param('artworkId') artworkId: string) {
     return await this.artworkService.findOne(artworkId);
   }
@@ -28,7 +38,10 @@ export class ArtworkController {
   }
 
   @Put(':artworkId')
-  async update(@Param('artworkId') artworkId: string, @Body() artworkDto: ArtworkDto) {
+  async update(
+    @Param('artworkId') artworkId: string,
+    @Body() artworkDto: ArtworkDto,
+  ) {
     const artwork = plainToInstance(ArtworkEntity, artworkDto);
     return await this.artworkService.update(artworkId, artwork);
   }
@@ -38,5 +51,4 @@ export class ArtworkController {
   async delete(@Param('artworkId') artworkId: string) {
     return await this.artworkService.delete(artworkId);
   }
-
 }

@@ -1,28 +1,34 @@
-import {ArtworkEntity} from "../artwork/artwork.entity"
-import { MuseumEntity } from "../museum/museum.entity";
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { SponsorEntity } from "../sponsor/sponsor.entity";
-
+import { ArtworkEntity } from '../artwork/artwork.entity';
+import { MuseumEntity } from '../museum/museum.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { SponsorEntity } from '../sponsor/sponsor.entity';
 
 @Entity()
 export class ExhibitionEntity {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
- 
-    @Column()
-    name: string;
- 
-    @Column()
-    description: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @ManyToOne(() => MuseumEntity, museum => museum.exhibitions)
-    museum: MuseumEntity;
+  @Column()
+  name: string;
 
-    @OneToMany(() => ArtworkEntity, artwork => artwork.exhibition)
-    artworks: ArtworkEntity[];
+  @Column()
+  description: string;
 
-    @OneToOne(() => SponsorEntity, sponsor => sponsor.exhibition)
-    @JoinColumn()
-    sponsor: SponsorEntity;
+  @ManyToOne(() => MuseumEntity, (museum) => museum.exhibitions)
+  museum: MuseumEntity;
 
+  @OneToMany(() => ArtworkEntity, (artwork) => artwork.exhibition)
+  artworks: ArtworkEntity[];
+
+  @OneToOne(() => SponsorEntity, (sponsor) => sponsor.exhibition)
+  @JoinColumn()
+  sponsor: SponsorEntity;
 }

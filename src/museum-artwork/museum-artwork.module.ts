@@ -8,6 +8,6 @@ import { MuseumArtworkController } from './museum-artwork.controller';
 @Module({
   imports: [TypeOrmModule.forFeature([MuseumEntity, ArtworkEntity])],
   providers: [MuseumArtworkService],
-  controllers: [MuseumArtworkController]
+  controllers: [MuseumArtworkController],
 })
 export class MuseumArtworkModule {}

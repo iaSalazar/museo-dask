@@ -20,7 +20,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MuseumArtworkModule } from './museum-artwork/museum-artwork.module';
 
 @Module({
-  imports: [MuseumModule, ExhibitionModule, ArtworkModule, ArtistModule, SponsorModule, ImageModule, MovementModule,
+  imports: [
+    MuseumModule,
+    ExhibitionModule,
+    ArtworkModule,
+    ArtistModule,
+    SponsorModule,
+    ImageModule,
+    MovementModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -28,12 +35,21 @@ import { MuseumArtworkModule } from './museum-artwork/museum-artwork.module';
       username: 'postgres',
       password: '2006iaso',
       database: 'museum',
-      entities: [ArtistEntity, ArtworkEntity, ExhibitionEntity, ImageEntity, MovementEntity, MuseumEntity, SponsorEntity],
+      entities: [
+        ArtistEntity,
+        ArtworkEntity,
+        ExhibitionEntity,
+        ImageEntity,
+        MovementEntity,
+        MuseumEntity,
+        SponsorEntity,
+      ],
       dropSchema: true,
       synchronize: true,
-      keepConnectionAlive: true
+      keepConnectionAlive: true,
     }),
-    MuseumArtworkModule,],
+    MuseumArtworkModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
