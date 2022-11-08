@@ -1,12 +1,13 @@
+/* eslint-disable prettier/prettier */
 import { ExhibitionEntity } from "../exhibition/exhibition.entity";
 import { MuseumEntity } from "../museum/museum.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ImageEntity } from "../image/image.entity";
 import { ArtistEntity } from "../artist/artist.entity";
 
-
 @Entity()
 export class ArtworkEntity {
+
     @PrimaryGeneratedColumn("uuid")
     id: string;
  
